@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass | Finding Your Major &amp; Direction in College</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #2E7D6F;
+  --accent-light: #E0F2EE;
+  --accent-dark: #1B5E50;
+  --accent-glow: rgba(46,125,111,0.12);
+  --bg: #FAFAF7;
+  --card-bg: #FFFFFF;
+  --text: #2C2C2C;
+  --text-muted: #6B6B6B;
+  --border: #E8E5DE;
+  --warm: #F5F0E8;
+  --highlight: #FFF8E7;
+  --code-bg: #F4F1EB;
+  --serif: 'Crimson Pro', Georgia, serif;
+  --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+  --radius: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 17px; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(135deg, #1B5E50 0%, #2E7D6F 40%, #3A9B89 100%);
+  color: white;
+  padding: 4rem 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.07) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+.hero .subtitle {
+  font-size: 1.15rem;
+  opacity: 0.92;
+  max-width: 680px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  position: relative;
+}
+.hero .byline {
+  font-size: 0.88rem;
+  opacity: 0.7;
+  position: relative;
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+/* ─── TAB NAV ─── */
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.tab-btn {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--warm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+/* ─── CONTAINER ─── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.tab-panel { display: none; animation: fadeUp 0.4s ease; }
+.tab-panel.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s ease;
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+.card h2 {
+  font-family: var(--serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 1.4rem 0 0.6rem;
+}
+.card h4 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin: 1rem 0 0.4rem;
+}
+.card p { margin-bottom: 0.9rem; }
+.card ul, .card ol {
+  padding-left: 1.4rem;
+  margin-bottom: 0.9rem;
+}
+.card li { margin-bottom: 0.45rem; line-height: 1.65; }
+
+/* ─── CALLOUTS ─── */
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 1.2rem 1.4rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 1.2rem 0;
+  font-size: 0.97rem;
+}
+.callout.warm {
+  background: var(--highlight);
+  border-left-color: #D4A843;
+}
+.callout.honest {
+  background: #FFF0F0;
+  border-left-color: #C25B56;
+}
+.callout strong { color: var(--accent-dark); }
+.callout.warm strong { color: #8B6914; }
+.callout.honest strong { color: #993333; }
+
+/* ─── WISDOM QUOTE ─── */
+.wisdom {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  text-align: center;
+  color: var(--accent-dark);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  border-top: 2px solid var(--accent-light);
+  border-bottom: 2px solid var(--accent-light);
+  line-height: 1.6;
+}
+.wisdom .attribution {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: normal;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* ─── DEFINITION BOXES ─── */
+.definition {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.3rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+.definition .term {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+}
+.definition .meaning { margin-top: 0.3rem; color: var(--text); }
+
+/* ─── SELF-REFLECTION ─── */
+.reflection {
+  background: linear-gradient(135deg, var(--warm) 0%, #F9F4EC 100%);
+  border: 2px solid #D4C5A9;
+  border-radius: var(--radius);
+  padding: 1.5rem 1.8rem;
+  margin: 1.5rem 0;
+}
+.reflection h3 {
+  font-family: var(--serif);
+  color: #8B6914;
+  margin-bottom: 0.8rem;
+}
+.reflection .q {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.97rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.reflection .q:last-child { border-bottom: none; }
+.reflection .q-num {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ─── COMPARISON TABLE ─── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+.compare-table th {
+  background: var(--accent);
+  color: white;
+  font-family: var(--sans);
+  font-weight: 600;
+  padding: 0.75rem 0.8rem;
+  text-align: left;
+  border: 1px solid var(--accent-dark);
+}
+.compare-table td {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare-table tr:nth-child(even) td { background: var(--warm); }
+.compare-table tr:hover td { background: var(--accent-light); }
+
+/* ─── FRAMEWORK GRID ─── */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.framework-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  transition: all 0.25s;
+}
+.framework-card { cursor: default; }
+.framework-card .fc-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.framework-card .fc-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 0.4rem;
+}
+.framework-card .fc-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── STEP BOXES ─── */
+.steps { margin: 1rem 0; }
+.step {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  background: var(--accent);
+  color: white;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.step-body {}
+.step-body strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--accent-dark);
+  margin-bottom: 0.25rem;
+}
+.step-body p { margin: 0; font-size: 0.95rem; }
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 1.2rem 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 1.3rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -2.15rem; top: 0.45rem;
+  width: 14px; height: 14px;
+  background: var(--accent);
+  border: 3px solid var(--card-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tl-label {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+.tl-text { font-size: 0.95rem; }
+
+/* ─── FAQ ACCORDION ─── */
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.faq-q {
+  padding: 1rem 1.3rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.97rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  user-select: none;
+}
+.faq-q:hover { background: var(--accent-light); }
+.faq-q .arrow { font-size: 1.1rem; transition: transform 0.3s; color: var(--accent); }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.3rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 1000px; padding: 0.5rem 1.3rem 1.2rem; }
+
+/* ─── MAJOR MAPPER TABLE ─── */
+.major-cluster {
+  margin-bottom: 1.5rem;
+}
+.cluster-label {
+  background: var(--accent);
+  color: white;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.45rem 1rem;
+  border-radius: 6px 6px 0 0;
+  letter-spacing: 0.04em;
+}
+.cluster-body {
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+.cluster-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+.cluster-row:last-child { border-bottom: none; }
+.cluster-row:nth-child(even) { background: var(--warm); }
+.cluster-row:hover { background: var(--accent-light); }
+.cluster-row > div { padding: 0.55rem 0.85rem; }
+.cluster-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  background: var(--code-bg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.cluster-header > div { padding: 0.4rem 0.85rem; }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 2px solid var(--border);
+  margin-top: 2rem;
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 3rem 1.2rem 2.5rem; }
+  .tab-nav { gap: 0.35rem; padding: 0.7rem 0.8rem; }
+  .tab-btn { font-size: 0.78rem; padding: 0.4rem 0.7rem; }
+  .container { padding: 1.2rem 1rem 3rem; }
+  .card { padding: 1.4rem; }
+  .framework-grid { grid-template-columns: 1fr; }
+  .cluster-row, .cluster-header { grid-template-columns: 1fr 1fr; }
+  .cluster-row > div:last-child, .cluster-header > div:last-child { display: none; }
+}
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  .hero h1 { font-size: 1.7rem; }
+  .tab-btn { font-size: 0.72rem; padding: 0.35rem 0.55rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <h1>Compass</h1>
+  <div class="subtitle">Your Honest, Practical Guide to Choosing a Major and Finding Your Direction in College</div>
+  <div class="byline">Not knowing is not a flaw. It is a starting point. Let's work from here.</div>
+</div>
+
+<!-- ═══════════ TAB NAV ═══════════ -->
+<nav class="tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="start">Start Here</button>
+  <button class="tab-btn" data-tab="discover">Discover Yourself</button>
+  <button class="tab-btn" data-tab="majors">Majors & Careers</button>
+  <button class="tab-btn" data-tab="exposure">You Were Not Taught</button>
+  <button class="tab-btn" data-tab="explore">Explore for Real</button>
+  <button class="tab-btn" data-tab="change">Changing Your Mind</button>
+  <button class="tab-btn" data-tab="mentors">Advisors & Mentors</button>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════ TAB 1: START HERE ═══════════ -->
+<div class="tab-panel active" id="panel-start">
+
+<div class="card">
+  <h2>You Are Not Behind. You Are Just Beginning.</h2>
+  <p>If you are reading this because you do not know what you want to major in, or because you picked a major and now you are not sure it is right, or because everyone else seems to have a plan and you feel like you are missing something. Take a breath. You are in exactly the right place.</p>
+
+  <p>Here is something most people will not tell you: the majority of college students do not know what they want to do with their lives when they arrive on campus. And a significant number of the ones who <em>think</em> they know will change their minds at least once before they graduate. This is not a failure. This is how humans actually work. We figure out what we want by trying things, experiencing the world, and paying attention to what energizes us and what drains us.</p>
+
+  <div class="wisdom">
+    "The two most important days in your life are the day you were born and the day you find out why."
+    <span class="attribution">— often attributed to Mark Twain</span>
+  </div>
+
+  <p>This site will not hand you an answer. Nobody can do that for you. What it <em>will</em> do is give you frameworks for thinking clearly, honest information about how majors connect to careers, practical steps you can take right now, and the reassurance that confusion at this stage is completely normal, and completely navigable.</p>
+
+  <p>There is one thing this guide asks of you in return: honesty. Not the polished, "what sounds good" version of yourself that you present in a scholarship essay. The real you. Because the only path that will make you genuinely happy is the one that fits the person you actually are, not the person you think you should be, not the person your parents imagined, not the person who looks good at a family dinner. <em>You.</em></p>
+</div>
+
+<div class="card">
+  <h2>The Three Types of Undecided Students</h2>
+  <p>Not all uncertainty is the same. It helps to recognize which situation you are in, because the strategies that help each one are a little different.</p>
+
+  <div class="framework-grid">
+    <div class="framework-card">
+      <div class="fc-icon">🌫️</div>
+      <div class="fc-title">The Blank Slate</div>
+      <div class="fc-desc">You genuinely do not know what interests you. Nothing has grabbed your attention strongly enough. You may feel anxious about this. You are not broken. You just have not had enough exposure yet. The solution is curiosity and experimentation.</div>
+    </div>
+    <div class="framework-card">
+      <div class="fc-icon">🎯</div>
+      <div class="fc-title">The Conflicted</div>
+      <div class="fc-desc">You like several things but cannot figure out which one to commit to. You worry that choosing one means losing the others. This is actually a good problem. It means you have interests. The solution is understanding that most interests can be combined or sequenced.</div>
+    </div>
+    <div class="framework-card">
+      <div class="fc-icon">🔒</div>
+      <div class="fc-title">The Trapped</div>
+      <div class="fc-desc">You feel locked into a path, whether from family expectations, financial pressure, or fear of disappointing someone, even though it does not feel right. This is the hardest situation, because the obstacle is not information but courage. You can do this. Many people have.</div>
+    </div>
+  </div>
+
+  <p>Which one are you? Most students are a blend of two or all three at different moments. Use the tabs above to work through the parts of this guide that speak most directly to your situation.</p>
+</div>
+
+<div class="card">
+  <h2>What This Guide Covers</h2>
+  <p><strong>"Discover Yourself"</strong> gives you self-assessment frameworks, practical tools to understand your own interests, values, and strengths. <strong>"Majors &amp; Careers"</strong> maps the common college majors to the real careers they open up, with honest descriptions of what each path actually looks like. <strong>"You Were Not Taught"</strong> addresses something important: many students feel behind not because they are less capable, but because they were not given the same foundations as others. <strong>"Explore for Real"</strong> walks you through concrete steps: informational interviews, job shadowing, internships, and how to test an interest before you commit to it. <strong>"Changing Your Mind"</strong> is your permission slip, and your practical guide, for when a path stops feeling right. And <strong>"Advisors &amp; Mentors"</strong> teaches you how to find and use the human guidance that no website can replace.</p>
+</div>
+
+</div>
+
+<!-- ═══════════ TAB 2: DISCOVER YOURSELF ═══════════ -->
+<div class="tab-panel" id="panel-discover">
+
+<div class="card">
+  <h2>Know Yourself Before You Choose</h2>
+  <p>The biggest mistake students make when choosing a major is starting with the question "what major should I pick?" That is the wrong first question. The right first question is "who am I, and what do I care about?" A major is a tool, and the right tool depends on what you are trying to build.</p>
+
+  <p>There are four dimensions worth understanding about yourself before you start evaluating options: your <strong>interests</strong> (what draws your attention), your <strong>values</strong> (what matters to you in life and work), your <strong>strengths</strong> (what you do naturally well), and your <strong>preferred work style</strong> (how you like to spend your days). Most students know something about one or two of these, but rarely all four. Let's work through each.</p>
+</div>
+
+<div class="card">
+  <h2>Dimension 1: Your Interests</h2>
+  <p>Interests are not the same as what you are good at, and they are not the same as what pays well. They are simply the things that make you lean forward: the topics you read about when nobody is making you, the problems you find yourself thinking about in the shower, the subjects where time disappears when you are engaged.</p>
+
+  <div class="callout warm">
+    <strong>The Holland Code (RIASEC)</strong> is one of the most widely used frameworks for understanding career-relevant interests. It sorts people into six types: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional. Most people are a combination of two or three. Knowing your Holland Code helps narrow down the careers and majors that align with who you are.
+  </div>
+
+  <h3>The Six Holland Types: Which Sounds Most Like You?</h3>
+
+  <div style="overflow-x:auto;">
+  <table class="compare-table">
+    <tr>
+      <th>Type</th>
+      <th>You enjoy...</th>
+      <th>You are drawn to...</th>
+      <th>Sample majors</th>
+    </tr>
+    <tr>
+      <td><strong>Realistic (R)</strong></td>
+      <td>Working with your hands, tools, machines, or outdoors</td>
+      <td>Concrete problems with clear solutions</td>
+      <td>Engineering, agriculture, architecture, kinesiology, construction management</td>
+    </tr>
+    <tr>
+      <td><strong>Investigative (I)</strong></td>
+      <td>Analyzing data, researching, solving complex problems</td>
+      <td>Understanding how and why things work</td>
+      <td>Biology, chemistry, physics, computer science, economics, psychology, data science</td>
+    </tr>
+    <tr>
+      <td><strong>Artistic (A)</strong></td>
+      <td>Creating, expressing, imagining, innovating</td>
+      <td>Open-ended work without rigid rules</td>
+      <td>Art, music, theatre, creative writing, graphic design, film, architecture, English</td>
+    </tr>
+    <tr>
+      <td><strong>Social (S)</strong></td>
+      <td>Helping, teaching, advising, working with people</td>
+      <td>Making a difference in others' lives</td>
+      <td>Education, social work, nursing, public health, counseling, sociology, communications</td>
+    </tr>
+    <tr>
+      <td><strong>Enterprising (E)</strong></td>
+      <td>Leading, persuading, managing, competing</td>
+      <td>Influence, results, and achievement</td>
+      <td>Business, marketing, political science, pre-law, entrepreneurship, management</td>
+    </tr>
+    <tr>
+      <td><strong>Conventional (C)</strong></td>
+      <td>Organizing, structuring, working with data or systems</td>
+      <td>Accuracy, efficiency, clear expectations</td>
+      <td>Accounting, finance, information systems, library science, healthcare administration</td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="callout">
+    <strong>Free Holland Code assessments:</strong> O*NET Interest Profiler (mynextmove.org/explore/ip) is a free, well-validated 60-question assessment that gives you your Holland Code and suggests matching careers. It takes about 10 minutes. Take it before moving on.
+  </div>
+</div>
+
+<div class="card">
+  <h2>Dimension 2: Your Values</h2>
+  <p>Values are what you need a job to give you in order to feel satisfied, not just tolerated, but genuinely satisfied. Two people can have identical interests and end up in very different careers because they have different values. Someone who values security and stability might find a business job fulfilling; someone who values creativity and autonomy might find the same job suffocating.</p>
+
+  <div class="reflection">
+    <h3>Work Values Exercise</h3>
+    <div class="q"><span class="q-num">01</span> <span>Do you want to help people directly and personally, or do you prefer to contribute in ways that are less face-to-face?</span></div>
+    <div class="q"><span class="q-num">02</span> <span>Is financial security a primary concern, or are you willing to sacrifice income for work that feels meaningful?</span></div>
+    <div class="q"><span class="q-num">03</span> <span>Do you want to work independently (setting your own direction) or as part of a team with shared goals?</span></div>
+    <div class="q"><span class="q-num">04</span> <span>Do you want a predictable daily schedule, or do you prefer variety and the unexpected?</span></div>
+    <div class="q"><span class="q-num">05</span> <span>Is it important to you that your work produces something tangible you can point to, or are you comfortable with abstract or long-term contributions?</span></div>
+    <div class="q"><span class="q-num">06</span> <span>Does prestige and recognition matter a great deal to you, or is quiet satisfaction in the work itself enough?</span></div>
+    <div class="q"><span class="q-num">07</span> <span>How important is geographic flexibility to you? Some careers concentrate in specific cities or regions.</span></div>
+    <div class="q"><span class="q-num">08</span> <span>Do you want your work to align with a particular cause or mission, or is it enough for your work to be competent and well-compensated?</span></div>
+  </div>
+
+  <p>There are no right answers. But your honest answers will reveal things about which paths are likely to leave you fulfilled versus frustrated. A person who craves prestige and financial reward and hates ambiguity may not thrive in academic research. A person who needs autonomy and creative freedom may not thrive in a corporate accounting role, regardless of the salary.</p>
+</div>
+
+<div class="card">
+  <h2>Dimension 3: Your Strengths</h2>
+  <p>Strengths are different from interests, and both are different from skills. You might be interested in something you are not yet good at. You might be skilled at something you do not enjoy. The sweet spot, where careers tend to flourish, is the overlap between genuine interest and natural aptitude.</p>
+
+  <h3>How to Identify Your Strengths</h3>
+  <p>Ask yourself: what do people consistently ask for your help with? What tasks make time disappear because you are so absorbed? What comes easily to you that seems hard for others? What have teachers or supervisors praised you for repeatedly? These patterns are clues.</p>
+
+  <p>You can also take the <strong>CliftonStrengths assessment</strong> (previously StrengthsFinder); many universities offer free access through their advising offices. It identifies your top "talent themes" and is widely used in career counseling. Alternatively, the free <strong>VIA Character Strengths survey</strong> at viacharacter.org takes about 15 minutes and gives you a ranked profile of your core strengths.</p>
+
+  <div class="callout warm">
+    <strong>Important distinction:</strong> A strength is not necessarily something you enjoy. You might be excellent at detailed, precise data work but find it exhausting. That is a skill, not a strength in the truest sense. A real strength is something that feels natural, even energizing. Notice the difference when you reflect.
+  </div>
+</div>
+
+<div class="card">
+  <h2>Dimension 4: Your Preferred Work Style</h2>
+  <p>Work style is the least glamorous dimension, but it is often the deciding factor between happiness and misery in a career. Consider: do you want to sit at a desk most of the day, or move around? Work alone or in groups? Have structured hours or a flexible schedule? Work indoors or outdoors? Deal with the same type of problems daily or face constant new challenges? Manage others, or focus on individual contribution?</p>
+
+  <p>These preferences matter enormously, and yet most career conversations ignore them entirely. A student who knows they want to work with people, outdoors, with varied daily challenges might eventually thrive as a wildlife biologist, park ranger, athletic trainer, or physical therapist. Very different credentials, same underlying work style preference. Knowing this early saves years of trial and error.</p>
+</div>
+
+<div class="card">
+  <h2>Putting It Together: Your Personal Career Compass</h2>
+  <p>After working through all four dimensions, you should have a richer picture of yourself. Now synthesize it. Write down:</p>
+  <ul>
+    <li>Your top two Holland types</li>
+    <li>Your three most important work values</li>
+    <li>Two or three genuine strengths (not just skills, things that energize you)</li>
+    <li>Three things you know you want in your daily work environment</li>
+    <li>Two or three things you know you <em>do not</em> want</li>
+  </ul>
+
+  <p>This is your compass. It will not tell you exactly which job to get, but it will immediately eliminate large swaths of options that are poor fits, and it will point you toward clusters of careers worth exploring. That narrowing is enormously valuable.</p>
+
+  <div class="callout">
+    <strong>Take this to your next advisor meeting.</strong> Showing up with this kind of self-knowledge makes the conversation dramatically more productive than showing up and saying "I don't know what I want to do." You know things about yourself. Start there.
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ TAB 3: MAJORS & CAREERS ═══════════ -->
+<div class="tab-panel" id="panel-majors">
+
+<div class="card">
+  <h2>What a Major Actually Does (and Does Not Do)</h2>
+  <p>Here is something most students misunderstand: your college major does not determine your career as rigidly as you think. The majority of people end up working in fields that are only loosely connected to their undergraduate major. What a major primarily does is demonstrate that you can master a body of knowledge, think like an expert in a particular domain, and develop the habits of mind associated with that discipline.</p>
+
+  <p>Employers hire people. They look at your major as context, but they hire based on skills, experiences, attitude, and fit. A history major who has great analytical writing skills, relevant internship experience, and genuine professional presence can absolutely compete for jobs alongside a business major.</p>
+
+  <div class="callout warm">
+    <strong>The real purpose of a major:</strong> A good major gives you deep knowledge in an area, a network of professors and peers in that field, a credential that signals something to employers and graduate programs, and a framework for how to think about a particular type of problem. It is a launchpad, not a cage.
+  </div>
+
+  <h3>Three Things That Matter More Than Your Major</h3>
+  <p><strong>1. Your GPA</strong>: not just the number, but the pattern. Employers and graduate programs look at whether you challenged yourself and whether your performance improved over time. A 3.5 with rigorous courses is more impressive than a 3.9 with easy ones.</p>
+  <p><strong>2. Your experiences</strong>: internships, research, leadership roles, relevant jobs, significant volunteer work. These are the evidence that you can actually do something, not just sit in classrooms.</p>
+  <p><strong>3. Your ability to articulate your value</strong>: can you explain, clearly and confidently, what you know, what you have done, and what you bring to a team? This skill, communication, is almost universally ranked by employers as more important than technical knowledge.</p>
+</div>
+
+<div class="card">
+  <h2>Major Clusters and the Careers They Open</h2>
+  <p>Below are the major clusters that most colleges organize their offerings around, with the primary careers each opens and an honest note about what the path actually looks like. This is not exhaustive. It is a starting map.</p>
+
+  <!-- STEM -->
+  <div class="major-cluster">
+    <div class="cluster-label">STEM: Science, Technology, Engineering &amp; Mathematics</div>
+    <div class="cluster-body">
+      <div class="cluster-header">
+        <div>Major</div>
+        <div>Primary Careers</div>
+        <div>Honest Notes</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Biology / Biochemistry</strong></div>
+        <div>Research scientist, healthcare (with further training), biotech, lab technician, science writer</div>
+        <div>A bachelor's alone opens limited doors. Most careers require graduate or professional school. Choose this if you genuinely love science, not just because you are pre-med.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Chemistry</strong></div>
+        <div>Pharmaceutical industry, materials science, environmental testing, chemical engineering (with grad school), forensics</div>
+        <div>Strong job market for chemists in industry. Graduate school significantly expands options.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Computer Science</strong></div>
+        <div>Software engineer, data scientist, cybersecurity analyst, product manager, UX researcher, AI/ML</div>
+        <div>One of the most direct major-to-job pipelines. High demand, high salaries, very broad applicability across every industry.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Data Science / Statistics</strong></div>
+        <div>Data analyst, data scientist, actuarial science, market research, public health analytics</div>
+        <div>Fast-growing field. Highly valued across industries. Combines math, statistics, and programming.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Engineering (any branch)</strong></div>
+        <div>Engineer in that specialty, R&amp;D, consulting, management, entrepreneurship</div>
+        <div>One of the strongest return-on-investment majors. Rigorous curriculum. Strong employment outcomes. Each branch (civil, mechanical, electrical, chemical, biomedical) has its own job market.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Mathematics</strong></div>
+        <div>Finance, actuarial science, data analytics, operations research, teaching, graduate school in any quantitative field</div>
+        <div>Highly versatile. Math majors are recruited aggressively by finance, tech, and consulting industries.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Physics</strong></div>
+        <div>Engineering, finance (quantitative), research, technology, graduate school in physics or related fields</div>
+        <div>Strong analytical training. Graduates are valued for problem-solving skills even outside physics proper.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Health & Human Services -->
+  <div class="major-cluster">
+    <div class="cluster-label">Health &amp; Human Services</div>
+    <div class="cluster-body">
+      <div class="cluster-header">
+        <div>Major</div>
+        <div>Primary Careers</div>
+        <div>Honest Notes</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Nursing (BSN)</strong></div>
+        <div>Registered nurse, then nurse practitioner, CRNA, nurse educator, administrator</div>
+        <div>Direct clinical career from bachelor's. Strong job security, excellent career ladders. One of the most practical health degrees.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Public Health</strong></div>
+        <div>Epidemiology, health policy, community health, global health, nonprofit management</div>
+        <div>Broad field. A master's (MPH) significantly increases opportunities. Strong fit for people who want to help populations rather than individuals.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Kinesiology / Exercise Science</strong></div>
+        <div>Physical therapy (with grad school), athletic training, personal training, sports medicine, corporate wellness</div>
+        <div>Growing field. Physical therapist is a doctorate now (DPT). Check prerequisites early.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Social Work</strong></div>
+        <div>Clinical social worker (with MSW), case manager, child welfare, school social worker, healthcare social work</div>
+        <div>Deeply meaningful work. Salaries are modest relative to training. Burnout is real. Choose this with clear eyes and a genuine calling.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Psychology</strong></div>
+        <div>Counselor, therapist (with master's or doctorate), HR, UX research, social services, graduate school in psychology or neuroscience</div>
+        <div>A psychology bachelor's alone has limited direct career pathways; graduate school is usually necessary for clinical work. However, the analytical and interpersonal skills transfer widely.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business -->
+  <div class="major-cluster">
+    <div class="cluster-label">Business &amp; Economics</div>
+    <div class="cluster-body">
+      <div class="cluster-header">
+        <div>Major</div>
+        <div>Primary Careers</div>
+        <div>Honest Notes</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Accounting</strong></div>
+        <div>CPA, auditor, tax specialist, financial analyst, CFO</div>
+        <div>Strong, stable career pathway. CPA license requires additional coursework and exams. High demand across all industries.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Finance</strong></div>
+        <div>Investment banking, financial planning, corporate finance, private equity, insurance</div>
+        <div>Very competitive for elite roles. Strong quantitative skills required. The recruiting cycle for banking is intense and starts early.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Marketing</strong></div>
+        <div>Brand manager, digital marketing, market research, advertising, content strategy, product marketing</div>
+        <div>Blends creativity and data. Increasingly digital and data-driven. Strong portfolio matters more than the degree alone.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Management / Business Administration</strong></div>
+        <div>Operations, consulting, project management, entrepreneurship, human resources, general management</div>
+        <div>Very broad. Best when combined with a specific industry focus or strong internship history. The degree itself is not differentiated. Your experience is.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Economics</strong></div>
+        <div>Finance, consulting, policy analysis, government, graduate school in economics or public policy, law school</div>
+        <div>Rigorous analytical training. Very versatile. Strong quantitative economics is essentially applied mathematics.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Humanities & Social Sciences -->
+  <div class="major-cluster">
+    <div class="cluster-label">Humanities &amp; Social Sciences</div>
+    <div class="cluster-body">
+      <div class="cluster-header">
+        <div>Major</div>
+        <div>Primary Careers</div>
+        <div>Honest Notes</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>English / Writing</strong></div>
+        <div>Technical writer, editor, content strategist, journalist, communications, law school, publishing, UX writing</div>
+        <div>Writing skill is universally valued. English majors who can write clearly and think analytically find many doors open. Build a portfolio.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>History</strong></div>
+        <div>Law, government, archiving, museum work, education, consulting, journalism, graduate school</div>
+        <div>Exceptional training in research and argumentation. Transfers to any field that values analysis. Often paired with professional school.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Political Science</strong></div>
+        <div>Law, government service, policy, nonprofit leadership, international relations, journalism, consulting</div>
+        <div>Very strong pre-law major. Also prepares for public service careers. Internships in DC, state government, or campaigns are crucial.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Sociology / Anthropology</strong></div>
+        <div>Social research, nonprofit, public health, education, human resources, government, graduate school</div>
+        <div>Strong qualitative research and systems-thinking skills. Less direct job market than STEM. Experiences and graduate school matter more.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Communications</strong></div>
+        <div>Public relations, media, journalism, marketing, nonprofit communications, corporate communications</div>
+        <div>Practical and versatile. Varies widely by school and specialization. Internships and a strong portfolio are essential.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arts & Design -->
+  <div class="major-cluster">
+    <div class="cluster-label">Arts, Design &amp; Creative Fields</div>
+    <div class="cluster-body">
+      <div class="cluster-header">
+        <div>Major</div>
+        <div>Primary Careers</div>
+        <div>Honest Notes</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Graphic Design / Visual Communication</strong></div>
+        <div>Graphic designer, UX/UI designer, art director, brand designer, web designer</div>
+        <div>High demand when combined with digital and UX skills. Portfolio is everything. Learn the software.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Architecture</strong></div>
+        <div>Licensed architect (requires 5-year B.Arch or M.Arch), urban planning, interior design, construction management</div>
+        <div>Long path to licensure. Demanding program. Strong job market for licensed architects. Make sure you love both the art and the technical rigor.</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Music / Theatre / Fine Arts</strong></div>
+        <div>Performer, teacher, arts administrator, music therapist, arts technology, creative industry roles</div>
+        <div>Requires honest assessment of skill level and career goals. Many successful arts graduates work at the intersection of art and business, technology, or education.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="major-cluster">
+    <div class="cluster-label">Education</div>
+    <div class="cluster-body">
+      <div class="cluster-header">
+        <div>Major</div>
+        <div>Primary Careers</div>
+        <div>Honest Notes</div>
+      </div>
+      <div class="cluster-row">
+        <div><strong>Education (any level)</strong></div>
+        <div>K-12 teacher, school counselor, curriculum developer, educational technology, administration (with further training)</div>
+        <div>Teaching is among the most important and undervalued professions. Licensing requirements vary by state. Intrinsically rewarding if it is your calling. Salaries are improving but remain below comparable professions in many states.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The "What Can I Do With This Major?" Question</h2>
+  <p>Almost every major has a broader range of career applications than students expect. The best tool for exploring this is the <strong>What Can I Do With This Major?</strong> website (whatcanidowiththismajor.com), maintained by career centers at several major universities. It breaks down career paths, typical employers, and strategies for each major. Use it.</p>
+
+  <p>The <strong>O*NET OnLine database</strong> (onetonline.org) is another essential resource: it describes hundreds of occupations in detail, including the tasks involved, the skills required, typical work environment, education level, and salary data. If you are curious about a career, look it up here before you assume you know what it involves.</p>
+
+  <div class="callout honest">
+    <strong>A note about salary:</strong> Salary matters, and you should not pretend it does not. Financial security affects stress, freedom, and options in life. But salary data shows wide ranges within every field. A mediocre software engineer and an outstanding social worker can earn comparable salaries in different markets. The biggest predictor of your salary is not your major. It is how good you are at what you do, and how strategically you navigate your career.
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ TAB 4: EXPOSURE GAP ═══════════ -->
+<div class="tab-panel" id="panel-exposure">
+
+<div class="card">
+  <h2>You Were Not Taught. That Is Different From Being Unable to Learn.</h2>
+
+  <p>Before we talk about choosing a direction, we need to address something that quietly holds a lot of students back: the feeling that everyone else somehow already knows things you do not know. That other students arrived at college with a map, and you showed up without one. That the confusion you feel is evidence of some personal deficit, some intellectual limitation, some fundamental inadequacy that marks you as different from the students who seem to have it figured out.</p>
+
+  <p>That feeling is not true. And understanding why it is not true may be one of the most important things you take from this page.</p>
+
+  <div class="wisdom">
+    "The measure of intelligence is the ability to change."
+    <span class="attribution">— Albert Einstein</span>
+  </div>
+
+  <h3>The Exposure Gap</h3>
+
+  <p>Some of what looks like an ability gap is actually an exposure gap. Those are not the same thing, and the distinction matters enormously.</p>
+
+  <p>Maybe your school taught "new math" in a way that felt confusing. Maybe you were never drilled on multiplication tables because your school focused on conceptual understanding instead, and now basic arithmetic slows you down mid-problem. Maybe your school used whole-language reading instruction and nobody explicitly taught you phonics, so unfamiliar scientific terms feel impossible to decode. Maybe you never learned cursive and now you cannot read your professor's whiteboard notes. These are not intelligence problems. These are exposure problems. You were not taught, so you did not learn, and that is a completely different thing than being unable to learn. The distinction matters enormously. An exposure gap can be closed. A fixed deficit cannot. You have an exposure gap, not a deficit.</p>
+
+  <h3>What This Means for Choosing a Direction</h3>
+
+  <p>When students feel lost about their major and career, it is often not because they lack the capacity to succeed in a challenging field. It is because nobody showed them what the options actually look like from the inside. They have never met a chemical engineer or a public health researcher or a UX designer or a policy analyst. They have heard vague words: "go into business," "do something with computers," "you should be a doctor." But nobody walked them through the actual day-to-day reality of any of these careers.</p>
+
+  <p>That is an exposure gap. And you can close it deliberately.</p>
+
+  <div class="callout">
+    <strong>First-generation college students face a compounded version of this.</strong> If neither of your parents went to college, you did not grow up hearing dinner-table conversations about internships, professional networks, graduate school applications, or office politics. Students whose parents are professionals absorbed that knowledge without even realizing it. You were not given that exposure. That is a structural inequality, not a personal failing. Recognizing it helps you address it strategically rather than beating yourself up for not knowing things you were never taught.
+  </div>
+
+  <h3>What Students Often Feel (And What It Actually Means)</h3>
+
+  <div style="overflow-x:auto;">
+  <table class="compare-table">
+    <tr>
+      <th>What you feel</th>
+      <th>What you might conclude</th>
+      <th>What is probably true</th>
+    </tr>
+    <tr>
+      <td>"I don't know what I want to do with my life."</td>
+      <td>"Something is wrong with me."</td>
+      <td>You have not yet had enough exposure to the real working world to know what fits. This is solved by exploration, not self-criticism.</td>
+    </tr>
+    <tr>
+      <td>"Other students seem so sure of their path."</td>
+      <td>"They know something I don't."</td>
+      <td>Many of them are performing confidence they do not feel. Some are following a path their parents set for them. Very few have actually verified that their chosen path is right.</td>
+    </tr>
+    <tr>
+      <td>"I'm not good at anything that leads to a real career."</td>
+      <td>"I should pick something safe and practical even if I hate it."</td>
+      <td>You may not have discovered your strengths yet, or you may not know how those strengths connect to careers. Both problems have solutions.</td>
+    </tr>
+    <tr>
+      <td>"I changed my mind about my major and now I'm behind."</td>
+      <td>"I wasted time and made a mistake."</td>
+      <td>You gained information. The courses you took were not wasted. They told you something important about yourself, and many of those skills transfer.</td>
+    </tr>
+    <tr>
+      <td>"Everyone else seems to understand things in class that I don't."</td>
+      <td>"I'm not smart enough for this."</td>
+      <td>Some of your classmates had better preparation, not better minds. The gap can be closed with the right study strategies and the right support.</td>
+    </tr>
+  </table>
+  </div>
+
+  <h3>How to Close Exposure Gaps</h3>
+
+  <p><strong>Talk to people who actually do the work.</strong> Not their job title. Not a website description. The actual humans doing the job, every day. Ask them what their Monday morning looks like. Ask what surprised them about the career. Ask what they wish someone had told them before they chose this path. This is the single most effective way to close an exposure gap quickly.</p>
+
+  <p><strong>Read biographies and career narratives.</strong> Not self-help books. Real accounts of how real people navigated real careers. The messiness, the pivots, the things that did not go as planned. This normalizes the non-linear path and gives you a more honest picture of how careers actually develop.</p>
+
+  <p><strong>Use your university's career center.</strong> This is a free, wildly underused resource. Career counselors have databases of alumni willing to talk to students, access to industry information, and tools for connecting your profile to possible careers. Most students do not walk through the door until senior year, when it is far better to start sophomore year.</p>
+
+  <p><strong>Be honest with your professors.</strong> "I'm not sure where I'm going with this degree" is a completely reasonable thing to say to a professor during office hours. Many professors have seen dozens of students navigate exactly this uncertainty and can offer perspective that a career website never could.</p>
+
+  <div class="callout warm">
+    <strong>Imposter syndrome is real, and it is almost universal.</strong> Studies consistently show that high-achieving students, particularly those who are first-generation college students, women in STEM, or students from underrepresented groups, experience disproportionate levels of self-doubt despite strong performance. If you feel like you do not belong here or that you will eventually be "found out," you are not alone. That feeling is lying to you. It is a product of exposure gaps and comparison, not evidence of inadequacy.
+  </div>
+</div>
+
+<div class="card">
+  <h2>A Note About Academic Struggles</h2>
+  <p>Sometimes the exposure gap shows up in a very concrete way: you are struggling in a class that other students seem to breeze through. Before you conclude that you are in the wrong major or the wrong field, ask whether the issue is foundational preparation rather than ceiling.</p>
+
+  <p>If you are struggling in Calculus, it may be because Precalculus was not taught well at your high school, not because you cannot do mathematics. If you are struggling in General Chemistry, it may be because you never had a strong chemistry or algebra foundation, not because science is beyond you. If you are struggling with academic writing, it may be because nobody ever taught you how to construct an argument, not because you cannot think critically.</p>
+
+  <p>In all of these cases, the solution is not to retreat. Go back and fill the gap. Tutoring, office hours, Khan Academy, peer study groups, a summer course. These are not embarrassing admissions of weakness. They are intelligent strategies for closing a gap that was never your fault to begin with.</p>
+</div>
+
+</div>
+
+<!-- ═══════════ TAB 5: EXPLORE FOR REAL ═══════════ -->
+<div class="tab-panel" id="panel-explore">
+
+<div class="card">
+  <h2>Stop Theorizing. Start Exploring.</h2>
+  <p>The single most common mistake undecided students make is trying to figure out their career from the inside of a classroom or a dorm room, thinking their way to an answer that can only be found by doing. Choosing a major based purely on what sounds interesting, what your family suggests, or what pays well in a magazine article is like choosing a place to live based only on photos. You need to actually go there.</p>
+
+  <p>There are several concrete tools for this, each one a different type of exposure, a different way of testing whether something is right before you commit to it. Use all of them.</p>
+</div>
+
+<div class="card">
+  <h2>Tool 1: The Informational Interview</h2>
+  <p>An informational interview is a conversation, not a job interview, where you ask a professional about their career, their path, and their honest perspective on the field. It is one of the most powerful, underused tools available to college students. Most professionals are genuinely happy to talk to a curious student for 20 to 30 minutes. People like talking about their work, and they appreciate being asked.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Identify people to contact</strong>
+        <p>Start with your university's alumni network: many universities have databases of alumni who have volunteered to speak with current students. Also ask your professors, your parents' networks, LinkedIn, and local professional associations.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Send a simple, specific request</strong>
+        <p>Keep it short. Introduce yourself, say why you are reaching out, ask specifically for 20 minutes of their time. Do not ask for a job or internship at this stage. Example: "I am a sophomore at [university] exploring careers in [field]. Your work in [specific area] caught my attention. Would you be willing to speak with me for 20 minutes about your career path? I would genuinely value your perspective."</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Prepare smart questions</strong>
+        <p>What does a typical Monday look like for you? What surprised you most about this career? What do you look for when hiring entry-level people? What skills do you wish you had developed earlier? If you were starting over, what would you do differently? What is the hardest part of this job that people outside it rarely see?</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Listen more than you talk</strong>
+        <p>You are there to learn, not to impress. Take notes. Ask follow-up questions. Be genuinely curious. Do not pitch yourself.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <strong>Send a thank-you within 24 hours</strong>
+        <p>A brief, sincere email. Reference one specific thing you learned. This is not just politeness. This is how professional relationships begin. Many students who do this well get offered future opportunities they never asked for.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warm">
+    <strong>Aim for 3 to 5 informational interviews per field you are seriously considering.</strong> One conversation gives you a single data point. Multiple conversations from people at different stages of the same career give you a genuine picture. You will notice patterns, including things people consistently love and things they consistently warn about, and that is where the real insight lives.
+  </div>
+</div>
+
+<div class="card">
+  <h2>Tool 2: Job Shadowing</h2>
+  <p>Job shadowing means spending a half-day or full day following someone through their actual workday. You observe, ask quiet questions, and get a ground-level view of what the job actually involves. It is the fastest way to determine whether a career that sounds good on paper feels right in practice.</p>
+
+  <p>How to arrange it: reach out through the same channels as informational interviews, but ask explicitly to shadow rather than just talk. Many professionals are open to this, especially for students who have already had an introductory conversation. Your career center may also have formal shadowing programs. Local hospitals, law firms, engineering companies, nonprofits, and government agencies often partner with universities for this purpose.</p>
+
+  <p>What to pay attention to during shadowing: What is the energy in the room? Do the people working there seem engaged or ground down? What does the physical environment look like: is it a setting where you could see yourself daily? What are the actual tasks filling the hours? Are those tasks things you would find satisfying, interesting, or draining? What do people talk about when they are not working? These observations will tell you things that no job description ever will.</p>
+</div>
+
+<div class="card">
+  <h2>Tool 3: Internships</h2>
+  <p>An internship is the most direct, highest-fidelity way to test a career path before committing to it. Internships put you inside an organization doing real (or close-to-real) work, and they give you information about fit that no informational interview or shadowing experience can match. They also build your resume, expand your network, and often lead directly to job offers.</p>
+
+  <h3>When to Start</h3>
+  <p>Earlier than you think. Sophomore year is not too early to pursue a first internship, even an unpaid, part-time, or research-based one. The students who graduate with multiple internship experiences have a significant advantage in the job market, and that advantage is built incrementally, not in a single senior-year sprint.</p>
+
+  <h3>How to Find Internships</h3>
+  <p>Your university's career center job board is the first stop. Also: Handshake (widely used by university career offices), LinkedIn, Indeed, and the websites of specific organizations you are interested in. Do not wait for opportunities to find you. Reach out directly to organizations you admire, even if they have not posted an opening. A well-written cold email to the right person works more often than most students expect.</p>
+
+  <h3>What If You Cannot Do a Paid Internship?</h3>
+  <p>Financial barriers to unpaid internships are real and disproportionately affect first-generation and lower-income students. Options: ask your career center about emergency funding or internship stipend programs (many universities have them and many students do not know), look for paid internships specifically, consider part-time options that work alongside a paying job, or ask employers directly whether any compensation is available. You can also do funded research with a professor. This counts as experience even if it is on campus.</p>
+
+  <div class="callout">
+    <strong>A note about research experiences:</strong> If you are considering graduate school, medical school, or a research-intensive career, working in a professor's lab as an undergraduate is not optional. It is essential. Reach out to professors whose work interests you and ask to join their lab, even as a volunteer. Most are happy to have motivated undergraduates, and this experience has compounding value over your college career.
+  </div>
+</div>
+
+<div class="card">
+  <h2>Tool 4: Courses as Experiments</h2>
+  <p>Every elective course you take is a low-stakes experiment. You can try a field for 15 weeks, develop a real sense of whether it engages you, and then either pursue it further or rule it out. All you have risked is one semester of your time.</p>
+
+  <p>Use your elective slots intentionally. If you are considering psychology but have never taken a course in it, take an introductory course before declaring it as your major. If you are curious about data science, take an intro statistics or programming course before committing to a technical path. Many students declare a major based on reputation or vague interest without ever sitting through a real course in the field, and then are surprised when it does not feel right.</p>
+
+  <p>Also: take courses that seem unrelated to your major. Some of the most valuable things students learn in college come from courses outside their major. A science student who takes a philosophy of ethics course, a business student who takes abnormal psychology, an English student who takes an introductory data analysis course. The intersections between fields are often where the most interesting careers live.</p>
+</div>
+
+<div class="card">
+  <h2>Tool 5: Clubs, Organizations, and Campus Involvement</h2>
+  <p>Student organizations are another low-risk testing ground. If you are curious about entrepreneurship, join your campus startup club. If you are considering journalism, write for the student newspaper. If you think you might want to go to law school, join the mock trial or debate team. If you are interested in public health, volunteer with a campus health initiative.</p>
+
+  <p>These involvements serve two purposes. First, they give you real experience and real feedback about whether an interest is deep enough to become a career. Second, they build exactly the kind of leadership and commitment that makes an application compelling. Admissions committees and employers want to see sustained involvement, not a laundry list of one-time activities.</p>
+
+  <div class="callout warm">
+    <strong>Go deep, not wide.</strong> Two or three organizations where you have genuine, sustained involvement and hold meaningful responsibilities will serve you far better than eight organizations where you showed up to meetings. Quality signals commitment and character. Quantity just looks like resume-padding.
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ TAB 6: CHANGING YOUR MIND ═══════════ -->
+<div class="tab-panel" id="panel-change">
+
+<div class="card">
+  <h2>Changing Your Mind Is Not Failure. It Is Data.</h2>
+  <p>One of the most paralyzing beliefs students carry is that changing their major is a kind of failure, as if it were evidence that they chose wrong, wasted time, or lack direction. This belief is not just unhelpful. It is factually incorrect. Changing your major is evidence that you have been paying attention. You tried something, gathered information, and made a better-informed decision. That is how humans learn. That is how careers actually develop.</p>
+
+  <p>About one-third of college students change their major at least once. Many change it twice. A significant number of successful, fulfilled professionals will tell you that their undergraduate major had almost nothing to do with their eventual career, and the unexpected path took them somewhere far better than their original plan would have.</p>
+
+  <div class="wisdom">
+    "Life is what happens when you're busy making other plans."
+    <span class="attribution">— John Lennon</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>When You Should Probably Change Your Major</h2>
+
+  <p>Not every moment of difficulty is a sign that a major is wrong. All majors are hard at some point. All careers involve work you do not enjoy. The question is whether your discomfort is temporary (the growing pains of a challenging but ultimately right path) or structural (a genuine mismatch between who you are and what the field requires).</p>
+
+  <div class="callout honest">
+    <strong>Consider changing if:</strong> You consistently dread the core content of the major, not just one hard class, but the substance of what the field is actually about. The more you learn about the careers this major leads to, the less appealing they become. You find yourself engaged and energized in a completely different area and keep returning to it. You are staying in the major primarily to avoid disappointing someone else, not because it genuinely fits you.
+  </div>
+
+  <div class="callout warm">
+    <strong>Do not change just because:</strong> One course was very difficult. Your first semester felt overwhelming. You got a bad grade in a class. A professor was discouraging. These are difficulties, not direction signs. Push through before you redirect.
+  </div>
+
+  <h3>The "Three-Conversation" Test</h3>
+  <p>Before changing your major, have three conversations: one with your current major's academic advisor (ask: "Is what I'm experiencing normal, and is there a path through it?"), one with a professor you trust in your current major (ask: "Does this field seem like a fit for someone like me, based on what you know of me?"), and one with someone in a field you are considering instead (ask: "What would my path look like if I came from where I am now?"). These three conversations will give you much better information than any internal deliberation alone.</p>
+</div>
+
+<div class="card">
+  <h2>The Practical Reality of Changing Your Major</h2>
+  <p>Changing your major has real costs: some credits may not count toward your new major, your timeline to graduation may lengthen, and you may need to take courses in a compressed sequence. These are real considerations, not reasons to stay in the wrong major, but they require honest planning.</p>
+
+  <h3>What to Do Immediately When You Decide to Change</h3>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-label">Step 1: Meet with your academic advisor</div>
+      <div class="tl-text">Before you do anything else, meet with the advisor for both your current major and your prospective major. Ask for a degree audit, which is a document showing exactly which credits you have completed, which requirements you have met, and what you still need for both majors. This gives you the actual picture, not your imagined version of it.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Step 2: Map the transfer of credits</div>
+      <div class="tl-text">Many courses transfer as general requirements even if they do not count toward your new major's specific requirements. Core courses in writing, mathematics, science, and humanities rarely go to waste. Be honest about which credits do not transfer and how much that affects your timeline.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Step 3: Assess the timeline honestly</div>
+      <div class="tl-text">If changing your major adds one semester to your graduation timeline, that is almost always worth it to be in the right field. If it adds two years, you need a more careful conversation about whether the change is worth it at this stage versus pursuing the new interest through other means (graduate school, certificate programs, career pivots after graduation).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Step 4: Consider a double major or minor</div>
+      <div class="tl-text">Sometimes the right answer is not to replace your current major but to add to it. A double major or a minor can be a way to honor both an existing commitment and a new interest, especially if you are relatively early in your college career and the fields share some requirements.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Step 5: Tell the people who need to know</div>
+      <div class="tl-text">Your financial aid office (major changes can sometimes affect scholarships, so verify),, your family (have an honest, prepared conversation, not a defensive one), and any mentors or letter writers who know you in your current field.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The "Permission" You Are Looking For</h2>
+  <p>Some students already know they need to change their major. They have known for a semester, maybe longer. But they are waiting for someone to give them permission. They are afraid of disappointing their parents, of looking indecisive, of "wasting" the credits they already have. So they keep going, doing work they do not believe in, in a field they do not love, waiting for something to give them an out.</p>
+
+  <p>Here is your permission: change your major if it is the right decision. The credits you have taken are not wasted. They taught you what does not fit, and that knowledge has value. Your parents' dream for you, if it is not your dream, cannot be lived by you. You are the one who will wake up every day and go to this work. That decision belongs to you.</p>
+
+  <p>Be strategic about it. Make a plan. Have the hard conversations. But do not let fear of judgment keep you in a life that does not fit.</p>
+
+  <div class="callout warm">
+    <strong>How to talk to your family about changing your major:</strong> Lead with your reasoning, not your apology. Explain what you have learned: about yourself, about the field, about what you want. Show that you have a plan, not just a complaint about your current path. Most parents will come around when they see that their child is thoughtful, intentional, and moving toward something rather than just running away from something.
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ TAB 7: ADVISORS & MENTORS ═══════════ -->
+<div class="tab-panel" id="panel-mentors">
+
+<div class="card">
+  <h2>The Advice You Need Cannot All Come From a Website</h2>
+  <p>This guide can give you frameworks and information. It cannot replace the human guidance of people who know you, who have walked similar paths, and who can respond to the specific details of your situation with the kind of nuanced, contextual wisdom that no database can provide. Finding and cultivating good mentors is one of the most high-value investments you can make in your college years. Most students never do it deliberately.</p>
+</div>
+
+<div class="card">
+  <h2>The Different Types of Guidance You Need</h2>
+  <p>You need more than one mentor, because no single person has all the knowledge and perspective you need. Think of it as building a team:</p>
+
+  <div class="framework-grid">
+    <div class="framework-card">
+      <div class="fc-icon">🎓</div>
+      <div class="fc-title">The Academic Mentor</div>
+      <div class="fc-desc">A professor or instructor who knows you well and can speak to your intellectual abilities, your growth, and your academic potential. This person is also your most important source of letters of recommendation. Build this relationship starting freshman year.</div>
+    </div>
+    <div class="framework-card">
+      <div class="fc-icon">💼</div>
+      <div class="fc-title">The Career Mentor</div>
+      <div class="fc-desc">A professional in a field you are seriously considering who can give you a realistic picture of the career, help you build your network, and advise on the specific steps toward entry. Found through alumni networks, informational interviews, and internship supervisors.</div>
+    </div>
+    <div class="framework-card">
+      <div class="fc-icon">🧭</div>
+      <div class="fc-title">The Life Mentor</div>
+      <div class="fc-desc">Someone who knows you as a full human being, not just your transcript or your career goals, and can offer perspective on the bigger questions. This might be a family member, a pastor or counselor, an older friend, or a trusted coach. Their job is to help you see yourself clearly.</div>
+    </div>
+    <div class="framework-card">
+      <div class="fc-icon">🤝</div>
+      <div class="fc-title">The Peer Mentor</div>
+      <div class="fc-desc">A student a year or two ahead of you who has navigated similar questions and can give you the ground-level, unfiltered perspective that older adults sometimes soften. They remember what it felt like to be exactly where you are.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>How to Build a Relationship With a Professor</h2>
+  <p>Most students interact with professors only during class and never go to office hours unless they are struggling. This is one of the biggest missed opportunities in college. Professors are intellectually curious people who became educators because they genuinely enjoy engaging with students who care about ideas. Go to them not just when you need help. Go when you are curious, when you want to understand something more deeply, when you want their perspective on a career question.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Go to office hours with a real question</strong>
+        <p>Not "can you explain what we did in class today" (read your notes first). A genuine question about the material, the field, the professor's research, or how the course connects to real careers. This signals that you are a student who thinks, not just one who needs help.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Introduce yourself early in the semester</strong>
+        <p>In the first two weeks, briefly introduce yourself before or after class, or during the first office hours session. Say your name, your year, something about your background or interest in the subject. Professors teach hundreds of students. Making yourself a real person to them early matters.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Follow up on conversations</strong>
+        <p>If a professor mentions research they are working on or a career path you find interesting, follow up in the next office hours visit. "I thought more about what you mentioned last week about X. Can I ask you more about that?" This signals genuine interest and builds real connection.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Ask explicitly about career and graduate school guidance</strong>
+        <p>Professors see students go on to medical school, law school, PhD programs, industry careers, and everything in between. They have informed perspectives on career paths in their field. Ask. "I'm trying to figure out whether a career in [X] is the right fit for me? From what you know of me, does that seem like a strong match? What would you suggest I do to explore it?"</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <strong>Maintain the relationship beyond one course</strong>
+        <p>A mentor is someone you return to over time. Check in occasionally, even when you are not taking their class. Update them on how your direction is evolving. A professor who watched you grow over three years will write a dramatically stronger letter of recommendation than one who saw you for a single semester.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Your Academic Advisor vs. a Faculty Mentor</h2>
+  <p>These are different people with different roles, and students often confuse them. Your <strong>academic advisor</strong> (in the advising office or your department) helps you navigate degree requirements, course selection, policies, and administrative processes. They are essential and you should meet with them every semester. But they typically have too many advisees to develop the kind of deep, relationship-based guidance that a faculty mentor can provide.</p>
+
+  <p>A <strong>faculty mentor</strong> is a professor who knows you personally, understands your intellectual profile, and can give you substantive guidance about academic and career direction in their field. You have to cultivate this relationship yourself. It does not happen automatically.</p>
+
+  <div class="callout">
+    <strong>Use both, for different purposes.</strong> When you need to know whether a course will count as a prerequisite, go to your academic advisor. When you want to know whether your profile is competitive for graduate school or whether a certain career path makes sense for someone like you, go to a faculty mentor.
+  </div>
+</div>
+
+<div class="card">
+  <h2>Questions to Ask a Potential Mentor</h2>
+  <p>When you have established enough of a relationship to have a longer conversation, here are some questions worth asking. These are not interview questions. They are conversation starters for a real, ongoing relationship.</p>
+
+  <div class="reflection">
+    <h3>Questions for a Professor or Academic Mentor</h3>
+    <div class="q"><span class="q-num">01</span> <span>How did you end up in your field? Was it the path you originally planned?</span></div>
+    <div class="q"><span class="q-num">02</span> <span>What do you wish someone had told you at my stage?</span></div>
+    <div class="q"><span class="q-num">03</span> <span>Based on what you've seen of my work, what are my genuine strengths? Where are my blind spots?</span></div>
+    <div class="q"><span class="q-num">04</span> <span>If you were advising a student with my profile who was considering [X career], what would you tell them to do?</span></div>
+    <div class="q"><span class="q-num">05</span> <span>What does success look like in your field five years out of graduate school? Ten years?</span></div>
+    <div class="q"><span class="q-num">06</span> <span>Are there people in your network you would be willing to introduce me to for an informational conversation?</span></div>
+  </div>
+
+  <div class="reflection">
+    <h3>Questions for a Career Mentor (Professional in a Field You're Considering)</h3>
+    <div class="q"><span class="q-num">01</span> <span>What does your Monday morning actually look like? Walk me through a typical week.</span></div>
+    <div class="q"><span class="q-num">02</span> <span>What parts of this job do people outside the field rarely understand or expect?</span></div>
+    <div class="q"><span class="q-num">03</span> <span>What would you look for if you were hiring an entry-level person in this field today?</span></div>
+    <div class="q"><span class="q-num">04</span> <span>What are the most common reasons people burn out or leave this field?</span></div>
+    <div class="q"><span class="q-num">05</span> <span>If you could do it over, is there anything you would do differently in how you prepared or entered this field?</span></div>
+    <div class="q"><span class="q-num">06</span> <span>Who else would you suggest I talk to?</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>When You Do Not Have Obvious Mentors</h2>
+  <p>Not every student arrives at college with a built-in network of connected professionals, educated family members, or obvious paths to mentorship. If you are starting from scratch, here is how to build it deliberately:</p>
+
+  <p><strong>Your university's alumni mentoring program.</strong> Most universities maintain databases of alumni who have specifically volunteered to advise current students. Your career center has access to this. A cold email to an alumnus through an official program has a very high response rate. They signed up specifically to help students like you.</p>
+
+  <p><strong>LinkedIn.</strong> Search for professionals in fields you are exploring, especially alumni of your university. A message that references the shared connection and asks a specific, respectful question ("I am a junior at [university] exploring careers in environmental consulting. I came across your work on [specific project] and I was wondering if you would be willing to speak with me for 20 minutes about your path.") works more often than most students expect.</p>
+
+  <p><strong>Your professors' networks.</strong> Every faculty member has a professional network of colleagues, former students, and collaborators. If you have built a genuine relationship with a professor, ask them directly: "Is there anyone in your network whose career path I should learn more about? I am trying to understand what options exist for someone with my interests." Most professors are happy to make an introduction for a student they trust.</p>
+
+  <p><strong>Professional associations.</strong> Almost every field has a professional association that offers student membership at low or no cost. These organizations often have mentoring programs, career resources, and events specifically designed to connect students with working professionals. Find the one for your field and join it.</p>
+
+  <div class="callout warm">
+    <strong>The most important thing about mentors:</strong> They cannot be purely transactional. The students who build the best mentoring relationships are the ones who approach them with genuine curiosity, show up prepared, follow through on advice, and invest in the relationship over time, not just when they need something. Be that student. You will stand out, and the guidance you receive will be proportionally more valuable.
+  </div>
+</div>
+
+</div>
+
+</div><!-- end container -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="site-footer">
+  Built as an educational resource. Verify information with official sources. Information current as of 2025.
+</div>
+
+<!-- ═══════════ DISCLAIMER ═══════════ -->
+<div style="max-width: 800px; margin: 40px auto; padding: 20px 30px; background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #555;">
+  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;">⚠️ Important Notice</div>
+  <p style="margin: 0 0 10px 0;">These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
+  <p style="margin: 0 0 10px 0;">While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Science is constantly evolving, and material that was accurate at the time of writing may no longer reflect current understanding. Always verify important facts, formulas, and concepts against your official course materials.</p>
+  <p style="margin: 0 0 10px 0;">No guarantees are made regarding the completeness, accuracy, or reliability of any information presented on these sites. Use at your own discretion. If you spot an error, we appreciate you letting us know so it can be corrected.</p>
+  <p style="margin: 0 0 10px 0;">These materials are not affiliated with, endorsed by, or officially connected to any university, college, testing organization, or textbook publisher. All content represents the independent work and ideas of the author.</p>
+  <p style="margin: 0;">This resource is provided "as is" without warranty of any kind, express or implied. The author assumes no liability for any errors or for any actions taken based on the information provided here.</p>
+</div>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + target).classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 10, behavior: 'smooth' });
+  });
+});
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(fi => fi.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
