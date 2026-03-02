@@ -483,9 +483,40 @@ body {
   .hero h1 { font-size: 1.7rem; }
   .tab-btn { font-size: 0.72rem; padding: 0.35rem 0.55rem; }
 }
+
+/* ─── WCAG 2.1 AA: Visible focus indicators ─── */
+:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+.tab-btn:focus-visible, .nav-btn:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+/* ─── Skip link ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: #005fcc;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0 0 6px 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero">
@@ -495,20 +526,20 @@ body {
 </div>
 
 <!-- ═══════════ TAB NAV ═══════════ -->
-<nav class="tab-nav" id="tabNav">
-  <button class="tab-btn active" data-tab="start">Start Here</button>
-  <button class="tab-btn" data-tab="discover">Discover Yourself</button>
-  <button class="tab-btn" data-tab="majors">Majors & Careers</button>
-  <button class="tab-btn" data-tab="exposure">You Were Not Taught</button>
-  <button class="tab-btn" data-tab="explore">Explore for Real</button>
-  <button class="tab-btn" data-tab="change">Changing Your Mind</button>
-  <button class="tab-btn" data-tab="mentors">Advisors & Mentors</button>
+<nav class="tab-nav" role="tablist" aria-label="Page sections" id="tabNav">
+  <button role="tab" aria-selected="true" aria-controls="panel-start" class="tab-btn active" data-tab="start">Start Here</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-discover" class="tab-btn" data-tab="discover">Discover Yourself</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-majors" class="tab-btn" data-tab="majors">Majors & Careers</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-exposure" class="tab-btn" data-tab="exposure">You Were Not Taught</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-explore" class="tab-btn" data-tab="explore">Explore for Real</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-change" class="tab-btn" data-tab="change">Changing Your Mind</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-mentors" class="tab-btn" data-tab="mentors">Advisors & Mentors</button>
 </nav>
 
-<div class="container">
+<div class="container" id="main-content" role="main">
 
 <!-- ═══════════ TAB 1: START HERE ═══════════ -->
-<div class="tab-panel active" id="panel-start">
+<div class="tab-panel active" id="panel-start" role="tabpanel" aria-labelledby="btn-start">
 
 <div class="card">
   <h2>You Are Not Behind. You Are Just Beginning.</h2>
@@ -559,7 +590,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 2: DISCOVER YOURSELF ═══════════ -->
-<div class="tab-panel" id="panel-discover">
+<div class="tab-panel" id="panel-discover" role="tabpanel" aria-labelledby="btn-discover">
 
 <div class="card">
   <h2>Know Yourself Before You Choose</h2>
@@ -724,7 +755,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 3: MAJORS & CAREERS ═══════════ -->
-<div class="tab-panel" id="panel-majors">
+<div class="tab-panel" id="panel-majors" role="tabpanel" aria-labelledby="btn-majors">
 
 <div class="card">
   <h2>What a Major Actually Does (and Does Not Do)</h2>
@@ -963,7 +994,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 4: EXPOSURE GAP ═══════════ -->
-<div class="tab-panel" id="panel-exposure">
+<div class="tab-panel" id="panel-exposure" role="tabpanel" aria-labelledby="btn-exposure">
 
 <div class="card">
   <h2>You Were Not Taught. That Is Different From Being Unable to Learn.</h2>
@@ -1057,7 +1088,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 5: EXPLORE FOR REAL ═══════════ -->
-<div class="tab-panel" id="panel-explore">
+<div class="tab-panel" id="panel-explore" role="tabpanel" aria-labelledby="btn-explore">
 
 <div class="card">
   <h2>Stop Theorizing. Start Exploring.</h2>
@@ -1163,7 +1194,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 6: CHANGING YOUR MIND ═══════════ -->
-<div class="tab-panel" id="panel-change">
+<div class="tab-panel" id="panel-change" role="tabpanel" aria-labelledby="btn-change">
 
 <div class="card">
   <h2>Changing Your Mind Is Not Failure. It Is Data.</h2>
@@ -1240,7 +1271,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 7: ADVISORS & MENTORS ═══════════ -->
-<div class="tab-panel" id="panel-mentors">
+<div class="tab-panel" id="panel-mentors" role="tabpanel" aria-labelledby="btn-mentors">
 
 <div class="card">
   <h2>The Advice You Need Cannot All Come From a Website</h2>
@@ -1397,11 +1428,15 @@ const tabPanels = document.querySelectorAll('.tab-panel');
 tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const target = btn.dataset.tab;
-    tabBtns.forEach(b => b.classList.remove('active'));
+    tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
     tabPanels.forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     document.getElementById('panel-' + target).classList.add('active');
     window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 10, behavior: 'smooth' });
+  });
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
   });
 });
 document.querySelectorAll('.faq-q').forEach(q => {
