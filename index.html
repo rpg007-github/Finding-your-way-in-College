@@ -483,9 +483,40 @@ body {
   .hero h1 { font-size: 1.7rem; }
   .tab-btn { font-size: 0.72rem; padding: 0.35rem 0.55rem; }
 }
+
+/* ─── WCAG 2.1 AA: Visible focus indicators ─── */
+:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+.tab-btn:focus-visible, .nav-btn:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+/* ─── Skip link ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: #005fcc;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0 0 6px 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <!-- ═══════════ HERO ═══════════ -->
 <div class="hero">
@@ -495,20 +526,20 @@ body {
 </div>
 
 <!-- ═══════════ TAB NAV ═══════════ -->
-<nav class="tab-nav" id="tabNav">
-  <button class="tab-btn active" data-tab="start">Start Here</button>
-  <button class="tab-btn" data-tab="discover">Discover Yourself</button>
-  <button class="tab-btn" data-tab="majors">Majors & Careers</button>
-  <button class="tab-btn" data-tab="exposure">You Were Not Taught</button>
-  <button class="tab-btn" data-tab="explore">Explore for Real</button>
-  <button class="tab-btn" data-tab="change">Changing Your Mind</button>
-  <button class="tab-btn" data-tab="mentors">Advisors & Mentors</button>
+<nav class="tab-nav" role="tablist" aria-label="Page sections" id="tabNav">
+  <button role="tab" aria-selected="true" aria-controls="panel-start" class="tab-btn active" data-tab="start">Start Here</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-discover" class="tab-btn" data-tab="discover">Discover Yourself</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-majors" class="tab-btn" data-tab="majors">Majors & Careers</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-exposure" class="tab-btn" data-tab="exposure">You Were Not Taught</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-explore" class="tab-btn" data-tab="explore">Explore for Real</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-change" class="tab-btn" data-tab="change">Changing Your Mind</button>
+  <button role="tab" aria-selected="false" aria-controls="panel-mentors" class="tab-btn" data-tab="mentors">Advisors & Mentors</button>
 </nav>
 
-<div class="container">
+<div class="container" id="main-content" role="main">
 
 <!-- ═══════════ TAB 1: START HERE ═══════════ -->
-<div class="tab-panel active" id="panel-start">
+<div class="tab-panel active" id="panel-start" role="tabpanel" aria-labelledby="btn-start">
 
 <div class="card">
   <h2>You Are Not Behind. You Are Just Beginning.</h2>
@@ -532,17 +563,17 @@ body {
 
   <div class="framework-grid">
     <div class="framework-card">
-      <div class="fc-icon">🌫️</div>
+      <div class="fc-icon"><span aria-hidden="true">🌫️</span></div>
       <div class="fc-title">The Blank Slate</div>
       <div class="fc-desc">You genuinely do not know what interests you. Nothing has grabbed your attention strongly enough. You may feel anxious about this. You are not broken. You just have not had enough exposure yet. The solution is curiosity and experimentation.</div>
     </div>
     <div class="framework-card">
-      <div class="fc-icon">🎯</div>
+      <div class="fc-icon"><span aria-hidden="true">🎯</span></div>
       <div class="fc-title">The Conflicted</div>
       <div class="fc-desc">You like several things but cannot figure out which one to commit to. You worry that choosing one means losing the others. This is actually a good problem. It means you have interests. The solution is understanding that most interests can be combined or sequenced.</div>
     </div>
     <div class="framework-card">
-      <div class="fc-icon">🔒</div>
+      <div class="fc-icon"><span aria-hidden="true">🔒</span></div>
       <div class="fc-title">The Trapped</div>
       <div class="fc-desc">You feel locked into a path, whether from family expectations, financial pressure, or fear of disappointing someone, even though it does not feel right. This is the hardest situation, because the obstacle is not information but courage. You can do this. Many people have.</div>
     </div>
@@ -559,7 +590,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 2: DISCOVER YOURSELF ═══════════ -->
-<div class="tab-panel" id="panel-discover">
+<div class="tab-panel" id="panel-discover" role="tabpanel" aria-labelledby="btn-discover">
 
 <div class="card">
   <h2>Know Yourself Before You Choose</h2>
@@ -724,7 +755,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 3: MAJORS & CAREERS ═══════════ -->
-<div class="tab-panel" id="panel-majors">
+<div class="tab-panel" id="panel-majors" role="tabpanel" aria-labelledby="btn-majors">
 
 <div class="card">
   <h2>What a Major Actually Does (and Does Not Do)</h2>
@@ -963,7 +994,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 4: EXPOSURE GAP ═══════════ -->
-<div class="tab-panel" id="panel-exposure">
+<div class="tab-panel" id="panel-exposure" role="tabpanel" aria-labelledby="btn-exposure">
 
 <div class="card">
   <h2>You Were Not Taught. That Is Different From Being Unable to Learn.</h2>
@@ -1057,7 +1088,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 5: EXPLORE FOR REAL ═══════════ -->
-<div class="tab-panel" id="panel-explore">
+<div class="tab-panel" id="panel-explore" role="tabpanel" aria-labelledby="btn-explore">
 
 <div class="card">
   <h2>Stop Theorizing. Start Exploring.</h2>
@@ -1163,7 +1194,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 6: CHANGING YOUR MIND ═══════════ -->
-<div class="tab-panel" id="panel-change">
+<div class="tab-panel" id="panel-change" role="tabpanel" aria-labelledby="btn-change">
 
 <div class="card">
   <h2>Changing Your Mind Is Not Failure. It Is Data.</h2>
@@ -1240,7 +1271,7 @@ body {
 </div>
 
 <!-- ═══════════ TAB 7: ADVISORS & MENTORS ═══════════ -->
-<div class="tab-panel" id="panel-mentors">
+<div class="tab-panel" id="panel-mentors" role="tabpanel" aria-labelledby="btn-mentors">
 
 <div class="card">
   <h2>The Advice You Need Cannot All Come From a Website</h2>
@@ -1253,22 +1284,22 @@ body {
 
   <div class="framework-grid">
     <div class="framework-card">
-      <div class="fc-icon">🎓</div>
+      <div class="fc-icon"><span aria-hidden="true">🎓</span></div>
       <div class="fc-title">The Academic Mentor</div>
       <div class="fc-desc">A professor or instructor who knows you well and can speak to your intellectual abilities, your growth, and your academic potential. This person is also your most important source of letters of recommendation. Build this relationship starting freshman year.</div>
     </div>
     <div class="framework-card">
-      <div class="fc-icon">💼</div>
+      <div class="fc-icon"><span aria-hidden="true">💼</span></div>
       <div class="fc-title">The Career Mentor</div>
       <div class="fc-desc">A professional in a field you are seriously considering who can give you a realistic picture of the career, help you build your network, and advise on the specific steps toward entry. Found through alumni networks, informational interviews, and internship supervisors.</div>
     </div>
     <div class="framework-card">
-      <div class="fc-icon">🧭</div>
+      <div class="fc-icon"><span aria-hidden="true">🧭</span></div>
       <div class="fc-title">The Life Mentor</div>
       <div class="fc-desc">Someone who knows you as a full human being, not just your transcript or your career goals, and can offer perspective on the bigger questions. This might be a family member, a pastor or counselor, an older friend, or a trusted coach. Their job is to help you see yourself clearly.</div>
     </div>
     <div class="framework-card">
-      <div class="fc-icon">🤝</div>
+      <div class="fc-icon"><span aria-hidden="true">🤝</span></div>
       <div class="fc-title">The Peer Mentor</div>
       <div class="fc-desc">A student a year or two ahead of you who has navigated similar questions and can give you the ground-level, unfiltered perspective that older adults sometimes soften. They remember what it felt like to be exactly where you are.</div>
     </div>
@@ -1382,7 +1413,7 @@ body {
 
 <!-- ═══════════ DISCLAIMER ═══════════ -->
 <div style="max-width: 800px; margin: 40px auto; padding: 20px 30px; background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #555;">
-  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;">⚠️ Important Notice</div>
+  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;"><span aria-hidden="true">⚠️</span> Important Notice</div>
   <p style="margin: 0 0 10px 0;">These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
   <p style="margin: 0 0 10px 0;">While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Science is constantly evolving, and material that was accurate at the time of writing may no longer reflect current understanding. Always verify important facts, formulas, and concepts against your official course materials.</p>
   <p style="margin: 0 0 10px 0;">No guarantees are made regarding the completeness, accuracy, or reliability of any information presented on these sites. Use at your own discretion. If you spot an error, we appreciate you letting us know so it can be corrected.</p>
@@ -1397,11 +1428,15 @@ const tabPanels = document.querySelectorAll('.tab-panel');
 tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const target = btn.dataset.tab;
-    tabBtns.forEach(b => b.classList.remove('active'));
+    tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
     tabPanels.forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     document.getElementById('panel-' + target).classList.add('active');
     window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 10, behavior: 'smooth' });
+  });
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
   });
 });
 document.querySelectorAll('.faq-q').forEach(q => {
