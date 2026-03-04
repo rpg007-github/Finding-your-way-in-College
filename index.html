@@ -246,7 +246,7 @@ body {
 .reflection .q-num {
   font-family: var(--mono);
   font-size: 0.82rem;
-  color: var(--accent);
+  color: var(--accent-dark);  /* deepened from --accent: 4.33→6.70 on warm bg */
   font-weight: 500;
   flex-shrink: 0;
   margin-top: 0.1rem;
@@ -512,18 +512,88 @@ body {
   top: 0;
 }
 
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Disclaimer banner ─── */
+.disclaimer-banner {
+  background: linear-gradient(135deg, #f5f2eb, #faf7f2);
+  border-bottom: 1px solid var(--border);
+}
+.disclaimer-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.55rem 2rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+  user-select: none;
+}
+.disclaimer-toggle:hover { background: rgba(0,0,0,0.03); }
+.disc-arrow { transition: transform 0.3s; font-size: 0.7rem; }
+.disc-arrow.open { transform: rotate(180deg); }
+.disclaimer-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 2rem;
+}
+.disclaimer-body.open { max-height: 500px; padding: 0 2rem 1.2rem; }
+.disclaimer-body-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.disclaimer-body-inner p { margin-bottom: 0.5rem; }
+.disclaimer-body-inner p:last-child { margin-bottom: 0; }
+
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
+<!-- ═══════════ DISCLAIMER BANNER ═══════════ -->
+<div class="disclaimer-banner" role="region" aria-label="Important disclaimer">
+  <button type="button" class="disclaimer-toggle" onclick="toggleDisclaimer()" aria-expanded="false" aria-controls="disc-body">
+    <span aria-hidden="true">⚠️</span>
+    <span>Important Disclaimer</span>
+    <span class="disc-arrow" id="disc-arrow" aria-hidden="true">▼</span>
+  </button>
+  <div class="disclaimer-body" id="disc-body">
+    <div class="disclaimer-body-inner">
+      <p>These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
+      <p>While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Always verify important facts and concepts against your official course materials.</p>
+      <p>No guarantees are made regarding the completeness, accuracy, or reliability of any information presented. Use at your own discretion.</p>
+      <p>These materials are not affiliated with, endorsed by, or officially connected to any university, college, testing organization, or textbook publisher. All content represents the independent work and ideas of the author.</p>
+    </div>
+  </div>
+</div>
+
 
 <!-- ═══════════ HERO ═══════════ -->
-<div class="hero">
+<header class="hero" role="banner">
   <h1>Compass</h1>
   <div class="subtitle">Your Honest, Practical Guide to Choosing a Major and Finding Your Direction in College</div>
   <div class="byline">Not knowing is not a flaw. It is a starting point. Let's work from here.</div>
-</div>
+
+</header>
 
 <!-- ═══════════ TAB NAV ═══════════ -->
 <nav class="tab-nav" role="tablist" aria-label="Page sections" id="tabNav">
@@ -1103,35 +1173,35 @@ body {
 
   <div class="steps">
     <div class="step">
-      <div class="step-num">1</div>
+      <div class="step-num" aria-hidden="true">1</div>
       <div class="step-body">
         <strong>Identify people to contact</strong>
         <p>Start with your university's alumni network: many universities have databases of alumni who have volunteered to speak with current students. Also ask your professors, your parents' networks, LinkedIn, and local professional associations.</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">2</div>
+      <div class="step-num" aria-hidden="true">2</div>
       <div class="step-body">
         <strong>Send a simple, specific request</strong>
         <p>Keep it short. Introduce yourself, say why you are reaching out, ask specifically for 20 minutes of their time. Do not ask for a job or internship at this stage. Example: "I am a sophomore at [university] exploring careers in [field]. Your work in [specific area] caught my attention. Would you be willing to speak with me for 20 minutes about your career path? I would genuinely value your perspective."</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">3</div>
+      <div class="step-num" aria-hidden="true">3</div>
       <div class="step-body">
         <strong>Prepare smart questions</strong>
         <p>What does a typical Monday look like for you? What surprised you most about this career? What do you look for when hiring entry-level people? What skills do you wish you had developed earlier? If you were starting over, what would you do differently? What is the hardest part of this job that people outside it rarely see?</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">4</div>
+      <div class="step-num" aria-hidden="true">4</div>
       <div class="step-body">
         <strong>Listen more than you talk</strong>
         <p>You are there to learn, not to impress. Take notes. Ask follow-up questions. Be genuinely curious. Do not pitch yourself.</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">5</div>
+      <div class="step-num" aria-hidden="true">5</div>
       <div class="step-body">
         <strong>Send a thank-you within 24 hours</strong>
         <p>A brief, sincere email. Reference one specific thing you learned. This is not just politeness. This is how professional relationships begin. Many students who do this well get offered future opportunities they never asked for.</p>
@@ -1312,35 +1382,35 @@ body {
 
   <div class="steps">
     <div class="step">
-      <div class="step-num">1</div>
+      <div class="step-num" aria-hidden="true">1</div>
       <div class="step-body">
         <strong>Go to office hours with a real question</strong>
         <p>Not "can you explain what we did in class today" (read your notes first). A genuine question about the material, the field, the professor's research, or how the course connects to real careers. This signals that you are a student who thinks, not just one who needs help.</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">2</div>
+      <div class="step-num" aria-hidden="true">2</div>
       <div class="step-body">
         <strong>Introduce yourself early in the semester</strong>
         <p>In the first two weeks, briefly introduce yourself before or after class, or during the first office hours session. Say your name, your year, something about your background or interest in the subject. Professors teach hundreds of students. Making yourself a real person to them early matters.</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">3</div>
+      <div class="step-num" aria-hidden="true">3</div>
       <div class="step-body">
         <strong>Follow up on conversations</strong>
         <p>If a professor mentions research they are working on or a career path you find interesting, follow up in the next office hours visit. "I thought more about what you mentioned last week about X. Can I ask you more about that?" This signals genuine interest and builds real connection.</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">4</div>
+      <div class="step-num" aria-hidden="true">4</div>
       <div class="step-body">
         <strong>Ask explicitly about career and graduate school guidance</strong>
         <p>Professors see students go on to medical school, law school, PhD programs, industry careers, and everything in between. They have informed perspectives on career paths in their field. Ask. "I'm trying to figure out whether a career in [X] is the right fit for me? From what you know of me, does that seem like a strong match? What would you suggest I do to explore it?"</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">5</div>
+      <div class="step-num" aria-hidden="true">5</div>
       <div class="step-body">
         <strong>Maintain the relationship beyond one course</strong>
         <p>A mentor is someone you return to over time. Check in occasionally, even when you are not taking their class. Update them on how your direction is evolving. A professor who watched you grow over three years will write a dramatically stronger letter of recommendation than one who saw you for a single semester.</p>
@@ -1407,19 +1477,10 @@ body {
 </div><!-- end container -->
 
 <!-- ═══════════ FOOTER ═══════════ -->
-<div class="site-footer">
+<footer class="site-footer" role="contentinfo">
   Built as an educational resource. Verify information with official sources. Information current as of 2025.
-</div>
+</footer>
 
-<!-- ═══════════ DISCLAIMER ═══════════ -->
-<div style="max-width: 800px; margin: 40px auto; padding: 20px 30px; background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #555;">
-  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;"><span aria-hidden="true">⚠️</span> Important Notice</div>
-  <p style="margin: 0 0 10px 0;">These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
-  <p style="margin: 0 0 10px 0;">While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Science is constantly evolving, and material that was accurate at the time of writing may no longer reflect current understanding. Always verify important facts, formulas, and concepts against your official course materials.</p>
-  <p style="margin: 0 0 10px 0;">No guarantees are made regarding the completeness, accuracy, or reliability of any information presented on these sites. Use at your own discretion. If you spot an error, we appreciate you letting us know so it can be corrected.</p>
-  <p style="margin: 0 0 10px 0;">These materials are not affiliated with, endorsed by, or officially connected to any university, college, testing organization, or textbook publisher. All content represents the independent work and ideas of the author.</p>
-  <p style="margin: 0;">This resource is provided "as is" without warranty of any kind, express or implied. The author assumes no liability for any errors or for any actions taken based on the information provided here.</p>
-</div>
 
 <!-- ═══════════ JAVASCRIPT ═══════════ -->
 <script>
@@ -1447,6 +1508,16 @@ document.querySelectorAll('.faq-q').forEach(q => {
     if (!wasOpen) item.classList.add('open');
   });
 });
+
+function toggleDisclaimer() {
+  const body  = document.getElementById('disc-body');
+  const arrow = document.getElementById('disc-arrow');
+  const btn   = document.querySelector('.disclaimer-toggle');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+  btn.setAttribute('aria-expanded', body.classList.contains('open') ? 'true' : 'false');
+}
+
 </script>
 </body>
 </html>
